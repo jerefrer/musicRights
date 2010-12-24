@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @song.name %>
+</p>
+
+<p>
+  <b>Song file name:</b>
+  <%= @song.song_file_name %>
+</p>
+
+<p>
+  <b>Song content type:</b>
+  <%= @song.song_content_type %>
+</p>
+
+<p>
+  <b>Song file size:</b>
+  <%= @song.song_file_size %>
+</p>
+
+<p>
+  <b>Song updated at:</b>
+  <%= @song.song_updated_at %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @song.category_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>
