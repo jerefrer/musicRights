@@ -3,8 +3,13 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag :all %>
     <%= csrf_meta_tag %>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        <%= yield(:dom_loaded) %>
+      })
+    </script>
     <%= yield(:head) %>
   </head>
   <body>

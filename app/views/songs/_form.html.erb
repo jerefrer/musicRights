@@ -1,3 +1,42 @@
+<% content_for :dom_loaded do %>
+  <%= load_uploadify %>
+
+  $("#song_song").uploadify({
+    'uploader'       : '/flash/uploadify.swf',
+    'buttonImg'      : '/images/upload.png',
+    'cancelImg'      : '/images/cancel.png',
+    'script'         : S3_BUCKET,
+    'fileDataName'   : 'file',
+    'scriptData'     : TRACK_UPLOADIFY,
+    'fileDesc'       : 'Music',
+    'fileExt'        : '*.mp3;', //list of uploadable filetypes
+    'onComplete'     : uploadify_complete,
+    'onError'        : uploadify_error,
+    'scriptAccess'   : 'always',
+    'queueID'        : 'uploadifyQueue',
+    'auto'           : true,
+    'folder'         : '',
+    'sizeLimit'      : 31457280,
+    'multi'          : true
+  });
+
+  function uploadify_error(event, queueID, fileObj, errorObj){
+    if(errorObj.info == 201){
+      $.post(CALLBACK_URL, {'_method': 'put', 'file[size]': fileObj.size, 'file[name]': fileObj.name}, function(data){
+        //  do stuff with data
+        $('#song_song').uploadifyCancel(queueID);
+        }, 'json');
+    }
+    return true;
+  }
+
+  function uploadify_complete(event, queueID, fileObj, response){
+    $.post(CALLBACK_URL, {'_method': 'put', 'file[size]': fileObj.size, 'file[name]': fileObj.name}, function(data){
+      // do stuff with data
+      }, 'json');
+  }
+<% end %>
+
 <%= form_for(@song, :html => { :multipart => true }) do |f| %>
   <% if @song.errors.any? %>
     <div id="error_explanation">

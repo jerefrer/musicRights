@@ -7,13 +7,15 @@ gem 'rails', '3.0.3'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'acts-as-taggable-on'
-gem 'aws-s3'
 gem 'devise'
 gem 'cancan'
 gem 'paperclip'
-gem 'right_aws'
-
+gem 'aws-s3'
+#gem 'right_aws'
+#gem 'right_http_connection'
 gem "nifty-generators"
+
+gem 'mime-types'
 
 # Use unicorn as the web server
 # gem 'unicorn'
