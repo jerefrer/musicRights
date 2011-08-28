@@ -24,6 +24,7 @@ Paiement:
   - Paypal direct
   - Système de crédits
   - Pouvoir écouter les zikes du panier
+  => Utiliser ActiveMerchant (?) : http://www.activemerchant.org/
 
 - Moteur de recherche
 
